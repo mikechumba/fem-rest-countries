@@ -13,8 +13,7 @@ const Header = {
         <nav>
             <h4>Where in the world</h4>
             <div class="">
-                
-                </i> Dark Mode
+                Dark Mode
             </div>
         </nav>
     `
