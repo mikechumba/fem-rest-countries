@@ -1,3 +1,4 @@
+import CountryDetails from "./components/CountryDetails";
 import Header from "./components/Header";
 
 
@@ -15,6 +16,7 @@ const app = Vue.createApp({
     }
 });
 
-app.component('nav-bar', Header)
+app.component('nav-bar', Header);
+app.component('country-details', CountryDetails);
 
 const vm = app.mount('#app');
