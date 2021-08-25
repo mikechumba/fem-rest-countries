@@ -1,24 +1,26 @@
 const Card = {
     template: `
-        <div class="card">
-            <div class="flag">
-                <img src="" alt="countryFlag">
+        <router-link to='/details/001'>
+            <div class="card">
+                <div class="flag">
+                    <img src="" alt="countryFlag">
+                </div>
+                <div class="summary">
+                    <h5>Germany</h5>
+                    <ul>
+                        <li>
+                            <b>Population:</b>
+                        </li>
+                        <li>
+                            <b>Region:</b>
+                        </li>
+                        <li>
+                            <b>Capital:</b>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="summary">
-                <h5>Germany</h5>
-                <ul>
-                    <li>
-                        <b>Population:</b>
-                    </li>
-                    <li>
-                        <b>Region:</b>
-                    </li>
-                    <li>
-                        <b>Capital:</b>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </router-link>
     `
 };
 

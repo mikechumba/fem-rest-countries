@@ -2,10 +2,23 @@ import Countries from "./components/Countries";
 import CountryDetails from "./components/CountryDetails";
 import Header from "./components/Header";
 
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes: [
+        { path: '/', component: Countries },
+        { path: '/details/:id', component: CountryDetails }
+    ]
+})
+
 const app = Vue.createApp({
+    components: {
+        'nav-bar': Header,
+        'country-details': CountryDetails,
+        'countries': Countries
+    },
     template: `
         <nav-bar></nav-bar>
-        <countries></countries>
+        <router-view></router-view>  
     `,
     data() {
         return {
@@ -17,8 +30,6 @@ const app = Vue.createApp({
     }
 });
 
-app.component('nav-bar', Header);
-app.component('country-details', CountryDetails);
-app.component('countries', Countries)
+app.use(router)
 
-const vm = app.mount('#app');
+app.mount('#app');

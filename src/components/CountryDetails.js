@@ -2,7 +2,9 @@ const CountryDetails = {
     template: `
         <div>
             <div>
-                <button>Back</button>
+                <router-link to="/">
+                    <button>Back</button>
+                </router-link>
             </div>
             <div>
                 <div>
@@ -44,7 +46,9 @@ const CountryDetails = {
                         <div>
                             <h5>Border Countries</h5>
                             <div>
-                                <button>France</button>
+                                <router-link to="/details/002">
+                                    <button>France</button>
+                                </router-link>
                             </div>
                         </div>
                     </div>
