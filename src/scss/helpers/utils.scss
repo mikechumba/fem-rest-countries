@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 // Variables
 :root {
     --dark-blue: hsl(209, 23%, 22%);
@@ -8,10 +10,21 @@
     --white: hsl(0, 0%, 100%);
 }
 
-// Mixins
+$breakpoints: (
+    'sm': 43em,
+    'md': 62em,
+    'lg': 82em
+);
 
+
+// Mixins
+@mixin breakpoint($size) {
+    @media (min-width: map-get($breakpoints, $key: 'sm')) {
+        @content
+    }
+}
 
 // Functions
-@function rem($pixels, $context: 16) {
-    @return ($pixels / $context) * 1rem;  
+@function toRem($pixels, $context: 16) {
+    @return math.div($pixels, $context) * 1rem;  
 }

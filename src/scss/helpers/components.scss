@@ -1,0 +1,30 @@
+@use 'utils';
+
+nav {
+    width: 100%;
+    box-shadow: -2px 7px 20px -10px rgba(0,0,0,0.66);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    margin-bottom: 24px;
+
+    .dark-mode-toggle {
+        display: flex;
+        align-items: center;
+        background: transparent;
+        border: none;
+        svg {
+            fill: none;
+            stroke: var(--dark-bg);
+            stroke-width: 32px;
+            height: utils.toRem(14);
+        }
+        span {
+            padding-left: 12px;
+            font-size: utils.toRem(14);
+            font-weight: 600;
+        }
+    }
+}
+
