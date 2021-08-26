@@ -2,6 +2,8 @@ import Countries from "./components/Countries";
 import CountryDetails from "./components/CountryDetails";
 import Header from "./components/Header";
 
+const url = 'https://restcountries.eu/rest/v2/all';
+
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
     routes: [
@@ -18,15 +20,25 @@ const app = Vue.createApp({
     },
     template: `
         <nav-bar></nav-bar>
-        <router-view></router-view>  
+        <router-view :countries="countries"></router-view>  
     `,
     data() {
         return {
-            country: ''
+            countries: []
         }
     },
+    mounted() {
+        this.getCountries();
+    },
     methods: {
-        
+        getCountries() {
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    this.countries = data
+                })
+                .catch(err => console.log(err));
+        }
     }
 });
 
