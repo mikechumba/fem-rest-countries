@@ -18,8 +18,8 @@ $breakpoints: (
 
 
 // Mixins
-@mixin breakpoint($size) {
-    @media (min-width: map-get($breakpoints, $key: 'sm')) {
+@mixin breakpoint($size, ) {
+    @media (min-width: map-get($breakpoints, $key: $size)) {
         @content
     }
 }

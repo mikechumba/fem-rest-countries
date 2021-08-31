@@ -1,19 +1,24 @@
 @use 'helpers' as *;
 
-* {
-    box-sizing: inherit;
+*, *::before, *::after {
     font-family: 'Nunito Sans', sans-serif;
+    box-sizing: inherit;
 }
+
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: var(--light-bg);
 }
-
-
 
 a {
     text-decoration: none;
     color: var(--dark-text);
+}
+
+
+li {
+    line-height: 1.6;
 }
