@@ -98,12 +98,13 @@ form {
     @include breakpoint('md') {
         margin: 24px 0;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap: 36px;
+        column-gap: 56px;
+        row-gap: 40px;
     }
 
     @include breakpoint('lg') {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap: 24px;
+        column-gap: 64px;
     }
 
     .card {
@@ -112,6 +113,7 @@ form {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;;
         .flag {
             width: 100%;
+            height: 50%;
             overflow: hidden;
             img {
                 border-radius: 8px 8px 0 0;

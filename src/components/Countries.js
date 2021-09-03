@@ -1,4 +1,4 @@
-import { regions } from "../utils";
+import { regions, numberWithCommas } from "../utils";
 
 const Card = {
     props: ['country'],
@@ -12,7 +12,7 @@ const Card = {
                     <h4>{{ country.name }}</h4>
                     <ul>
                         <li>
-                            <b>Population:</b> {{ country.population }}
+                            <b>Population:</b> {{ numberWithCommas(country.population) }}
                         </li>
                         <li>
                             <b>Region:</b> {{ country.region }}
@@ -24,7 +24,10 @@ const Card = {
                 </div>
             </router-link>
         </div>
-    `
+    `,
+    methods: {
+        numberWithCommas
+    }
 };
 
 const SearchForm = {
