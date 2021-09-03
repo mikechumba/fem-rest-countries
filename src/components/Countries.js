@@ -1,10 +1,10 @@
-import { regions } from "../scss/utils";
+import { regions } from "../utils";
 
 const Card = {
     props: ['country'],
     template: `
         <div class="card">
-            <router-link to='/details/001'>
+            <router-link :to="'/details/' + country.alpha3Code">
                 <div class="flag">
                     <img :src="country.flag" alt="countryFlag">
                 </div>

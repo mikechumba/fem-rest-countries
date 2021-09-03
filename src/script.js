@@ -8,7 +8,7 @@ const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
     routes: [
         { path: '/', component: Countries },
-        { path: '/details/:id', component: CountryDetails }
+        { path: '/details/:code', component: CountryDetails }
     ]
 })
 
@@ -20,7 +20,9 @@ const app = Vue.createApp({
     },
     template: `
         <nav-bar></nav-bar>
-        <router-view :countries="countries"></router-view>  
+        <main>
+            <router-view :countries="countries"></router-view>
+        </main>
     `,
     data() {
         return {

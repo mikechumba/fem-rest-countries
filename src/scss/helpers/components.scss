@@ -1,19 +1,23 @@
-@use 'utils';
+@use 'utils' as *;
 
 .page {
     margin: 24px;
-    @include utils.breakpoint('sm') {
+    @include breakpoint('sm') {
         margin: 24px 48px;
+    }
+
+    @include breakpoint('lg') {
+        margin: 36px 192px;
     }
 }
 
 nav {
     width: 100%;
-    box-shadow: -2px 7px 20px -10px rgba(0,0,0,0.66);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 12px;
+    padding: 0 40px;
     margin-bottom: 24px;
 
     .dark-mode-toggle {
@@ -25,11 +29,11 @@ nav {
             fill: none;
             stroke: var(--dark-bg);
             stroke-width: 32px;
-            height: utils.toRem(14);
+            height: toRem(14);
         }
         span {
             padding-left: 12px;
-            font-size: utils.toRem(14);
+            font-size: toRem(14);
             font-weight: 600;
         }
     }
@@ -39,7 +43,7 @@ form {
     display: flex;
     align-items: center;
     flex-flow: row wrap;
-    @include utils.breakpoint('sm') {
+    @include breakpoint('sm') {
         justify-content: space-between;
     }
 
@@ -52,14 +56,14 @@ form {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         border-radius: 6px;
 
-        @include utils.breakpoint('sm') {
+        @include breakpoint('sm') {
             width: 40%;
         }
 
         input {
             border: none;
             padding: 16px;
-            font-size: utils.toRem(14);
+            font-size: toRem(14);
             &::placeholder {
                 color: var(--dark-gray);
                 font-weight: 600;
@@ -72,7 +76,7 @@ form {
             
             fill: var(--dark-gray);
             padding: 0 4px 0 28px;
-            height: utils.toRem(21);
+            height: toRem(21);
         }
         &:focus-within {
             border: 0.125px solid var(--dark-gray);
@@ -86,18 +90,18 @@ form {
     grid-template-columns: 1fr;
     row-gap: 32px;
 
-    @include utils.breakpoint('sm') {
+    @include breakpoint('sm') {
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: 36px;
     }
 
-    @include utils.breakpoint('md') {
+    @include breakpoint('md') {
         margin: 24px 0;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         column-gap: 36px;
     }
 
-    @include utils.breakpoint('lg') {
+    @include breakpoint('lg') {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         column-gap: 24px;
     }
@@ -119,13 +123,13 @@ form {
             padding: 0 18px;
             margin: 12px 0;
             h4 {
-                font-size: utils.toRem(17.5);
+                font-size: toRem(17.5);
                 font-weight: 800;
                 margin: 12px 0;
             }
             ul {
                 padding: 0;
-                font-size: utils.toRem(14);
+                font-size: toRem(14);
                 li {
                     list-style: none;
                     b {
@@ -140,10 +144,9 @@ form {
 .custom-select {
     width: 60%;
 
-    @include utils.breakpoint('sm') {
+    @include breakpoint('sm') {
         width: 20%;
     }
-
 
     position: relative;
     .selected, .dropdown {
@@ -153,7 +156,7 @@ form {
         border-radius: 4px;
         padding: 16px 24px;
         appearance: none;
-        font-size: utils.toRem(14);
+        font-size: toRem(14);
         font-weight: 600;
         color: var(--dark-bg);
     }
@@ -190,3 +193,118 @@ form {
     display: none;
 }
 
+.btn {
+    outline: none;
+    background-color: var(--white);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 8px 16px;
+    font-size: toRem(14);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    &-previous {
+        margin: 24px 0;
+        margin-bottom: 40px;
+        display: flex;
+        padding: 8px 24px;
+        align-items: center;
+        svg {
+            fill: var(--dark-bg);
+            height: 12px;
+            padding-right: 8px;
+        }
+    }
+    &-group {
+        font-size: toRem(12);
+        margin-bottom: 4px;
+        margin-right: 8px;
+    }
+}
+
+.country-details {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 60%;
+
+    h4 {
+        margin: 16px 0;
+        font-size: toRem(21);
+
+        @include breakpoint('sm') {
+            margin: 0;
+            font-size: toRem(28);
+        }
+    }
+
+    h5 {
+        font-weight: 600;
+        font-size: toRem(14);
+        margin: 0;
+        margin-bottom: 8px;
+    }
+    
+    .flag {
+        width: 100%;
+
+        @include breakpoint('sm') {
+            width: 50%;
+        }
+
+        @include breakpoint('md') {
+            width: 45%;
+        }
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    .country-description {
+        font-size: toRem(14);
+        @include breakpoint('sm') {
+            width: 45%;
+            h5 {
+                margin-bottom: 8px;
+            }
+        }
+
+        @include breakpoint('md') {
+            width: 50%;
+            .description {
+                margin-top: 16px;
+                width: 80%;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .border-countries {
+                display: flex;
+                align-items: center;
+                h5 {
+                    margin: 0;
+                    margin-right: 16px;
+                }
+            }
+        }
+
+        ul {
+            padding: 0;
+            li {
+                list-style: none;
+                b {
+                    font-weight: 600;
+                    padding-right: 8px;
+                }
+            }
+        }
+
+        .border-countries {
+            margin-top: 24px;
+            h5 {
+                width: max-content;
+            }
+        }
+    }
+    
+}
