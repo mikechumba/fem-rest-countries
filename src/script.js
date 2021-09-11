@@ -19,7 +19,9 @@ const app = Vue.createApp({
         'countries': Countries
     },
     template: `
-        <nav-bar></nav-bar>
+        <header>
+            <nav-bar></nav-bar>
+        </header>
         <main>
             <router-view :countries="countries"></router-view>
         </main>

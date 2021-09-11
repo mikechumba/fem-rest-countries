@@ -17,8 +17,12 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 0 24px;
     margin-bottom: 24px;
+
+    @include breakpoint('sm') {
+        padding: 0 40px;
+    }
 
     .dark-mode-toggle {
         display: flex;
@@ -77,9 +81,6 @@ form {
             fill: var(--dark-gray);
             padding: 0 4px 0 28px;
             height: toRem(21);
-        }
-        &:focus-within {
-            border: 0.125px solid var(--dark-gray);
         }
     }
 }
@@ -145,12 +146,16 @@ form {
 
 .custom-select {
     width: 60%;
+    position: relative;
 
     @include breakpoint('sm') {
         width: 20%;
     }
 
-    position: relative;
+    li {
+        list-style: none;
+    }
+
     .selected, .dropdown {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         background-color: var(--white);

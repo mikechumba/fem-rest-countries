@@ -14,9 +14,9 @@ const CountryDetails = {
                     </button>
                 </router-link>
             </div>
-            <div class="country-details">
+            <article class="country-details">
                 <div class="flag">
-                    <img :src="country.flag" alt="countryflag">
+                    <img :src="country.flag" :alt="country.name + ' flag'">
                 </div>
                 <div class="country-description">
                     <h4>{{ country.name }}</h4>
@@ -62,7 +62,7 @@ const CountryDetails = {
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
         </div>
     `,
     data() {

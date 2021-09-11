@@ -1,4 +1,4 @@
-export const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+export const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 export const numberWithCommas = (num) => {
     return num ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
