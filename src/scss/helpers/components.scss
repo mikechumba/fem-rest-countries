@@ -149,7 +149,7 @@ form {
     position: relative;
 
     @include breakpoint('sm') {
-        width: 20%;
+        width: 30%;
     }
 
     li {
@@ -173,11 +173,15 @@ form {
         position: relative;
         display: flex;
         align-items: center;
+        width: 100%;
         svg {
             position: absolute;
             height: 24%;
             fill: var(--dark-bg);
             right: 24px;
+        }
+        &:focus {
+            outline: 0.25px dashed rgba(0, 0, 0, 0.25);
         }
     }
 
