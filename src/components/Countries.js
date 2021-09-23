@@ -6,7 +6,7 @@ const Card = {
         <section class="card">
             <router-link :to="'/details/' + country.alpha3Code">
                 <div class="flag">
-                    <img :src="country.flags[1]" :alt="country.name + ' flag'" role="img">
+                    <img :src="country.flags[1]" :alt="country.name + ' flag'" role="img" loading="lazy">
                 </div>
                 <div class="summary">
                     <h4>{{ country.name }}</h4>
@@ -155,11 +155,11 @@ const Countries = {
                         </div>
                         <div class="summary">
                             <h4 class="skeleton skeleton-text"></h4>
-                            <ul>
-                                <li class="skeleton skeleton-text"></li>
-                                <li class="skeleton skeleton-text"></li>
-                                <li class="skeleton skeleton-text"></li>
-                            </ul>
+                            <div>
+                                <p class="skeleton skeleton-text"></p>
+                                <p class="skeleton skeleton-text"></p>
+                                <p class="skeleton skeleton-text"></p>
+                            </div>
                         </div>
                     </router-link>
                 </section>
