@@ -1,5 +1,4 @@
 import Countries from "./components/Countries";
-import CountryDetails from "./components/CountryDetails";
 import Header from "./components/Header";
 
 const url = 'https://restcountries.com/v2/all';
@@ -8,14 +7,13 @@ const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
     routes: [
         { path: '/', component: Countries },
-        { path: '/details/:code', component: CountryDetails }
+        { path: '/details/:code', component: () => import('./components/CountryDetails') }
     ]
 })
 
 const app = Vue.createApp({
     components: {
         'nav-bar': Header,
-        'country-details': CountryDetails,
         'countries': Countries
     },
     template: `
