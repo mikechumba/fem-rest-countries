@@ -146,9 +146,23 @@ const Countries = {
     template: `
         <div class="page">
             <search-form @filterByRegion="filterByRegion" @searchCountry="searchCountry"></search-form>
-            <div class="country-list"> 
+            <div class="country-list">
                 <card v-if="filteredCountries.length" v-for="country in filteredCountries" :country="country"></card>
                 <card v-if="!filteredCountries.length" v-for="country in countries" :country="country"></card>
+                <section v-for="skeleton in Array(10)" class="card">
+                    <router-link to="/">
+                        <div class="skeleton skeleton-img">
+                        </div>
+                        <div class="summary">
+                            <h4 class="skeleton skeleton-text"></h4>
+                            <ul>
+                                <li class="skeleton skeleton-text"></li>
+                                <li class="skeleton skeleton-text"></li>
+                                <li class="skeleton skeleton-text"></li>
+                            </ul>
+                        </div>
+                    </router-link>
+                </section>
             </div>
         </div>   
     `,
