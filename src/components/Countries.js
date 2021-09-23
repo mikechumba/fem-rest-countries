@@ -3,10 +3,10 @@ import { regions, numberWithCommas, KEY_CODES } from "../utils";
 const Card = {
     props: ['country'],
     template: `
-        <section class="card">
+        <div class="card">
             <router-link :to="'/details/' + country.alpha3Code">
                 <div class="flag">
-                    <img :src="country.flags[1]" :alt="country.name + ' flag'" role="img" loading="lazy">
+                    <img :src="country.flags[0]" :alt="country.name + ' flag'" role="img" loading="lazy">
                 </div>
                 <div class="summary">
                     <h4>{{ country.name }}</h4>
@@ -23,7 +23,7 @@ const Card = {
                     </ul>
                 </div>
             </router-link>
-        </section>
+        </div>
     `,
     methods: {
         numberWithCommas
@@ -33,8 +33,8 @@ const Card = {
 const SearchForm = {
     emits: ['filterByRegion', 'searchCountry'],
     template: `
-        <section>
-            <form action="">
+        <div>
+            <form>
                 <div class="search-field">
                     <label class="sr-only" for="country-search">Search For Country</label>
                     <svg aria-labelledby="search-icon" role="img" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ const SearchForm = {
                     </li>
                 </ul>
             </form>
-        </section>
+        </div>
     `,
     data() {
         return {
@@ -149,20 +149,18 @@ const Countries = {
             <div class="country-list">
                 <card v-if="filteredCountries.length" v-for="country in filteredCountries.slice(0, lastIndex)" :country="country"></card>
             
-                <section v-if="!countries.length" v-for="skeleton in Array(8)" class="card">
-                    <router-link to="/">
-                        <div class="skeleton skeleton-img">
-                        </div>
-                        <div class="summary">
+                <div v-if="!countries.length" v-for="skeleton in Array(8)" class="card">
+                    <div class="skeleton skeleton-img">
+                    </div>
+                    <div class="summary">
+                        <p class="skeleton skeleton-text"></p>
+                        <div>
                             <p class="skeleton skeleton-text"></p>
-                            <div>
-                                <p class="skeleton skeleton-text"></p>
-                                <p class="skeleton skeleton-text"></p>
-                                <p class="skeleton skeleton-text"></p>
-                            </div>
+                            <p class="skeleton skeleton-text"></p>
+                            <p class="skeleton skeleton-text"></p>
                         </div>
-                    </router-link>
-                </section>
+                    </div>
+                </div>
             </div>
         </div>   
     `,
