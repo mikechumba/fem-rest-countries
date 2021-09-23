@@ -13,6 +13,7 @@
     --text-dimmed: var(--dark-gray);
     --elements-main: var(--white);
     --elements-dimmed: var(--dark-gray);
+    --shadow: 207, 26%, 17%;
 }
 
 [data-theme="dark"] {
@@ -21,6 +22,7 @@
     --text-dimmed: var(--dark-gray);
     --elements-main: var(--dark-blue);
     --elements-dimmed: var(--dark-text);
+    --shadow: 200, 15%, 8%;
 }
 
 $breakpoints: (
@@ -29,6 +31,7 @@ $breakpoints: (
     'lg': 82em
 );
 
+$box-shadow: hsla(var(--shadow), 8%) 0px 8px 24px;
 
 // Mixins
 @mixin breakpoint($size, ) {
