@@ -149,7 +149,7 @@ const Countries = {
             <div class="country-list">
                 <card v-if="filteredCountries.length" v-for="country in filteredCountries" :country="country"></card>
                 <card v-if="!filteredCountries.length" v-for="country in countries" :country="country"></card>
-                <section v-for="skeleton in Array(10)" class="card">
+                <section v-if="!countries.length" v-for="skeleton in Array(10)" class="card">
                     <router-link to="/">
                         <div class="skeleton skeleton-img">
                         </div>
