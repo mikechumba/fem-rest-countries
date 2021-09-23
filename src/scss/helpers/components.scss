@@ -53,7 +53,7 @@ form {
     }
 
     .search-field {
-        margin: 24px 0;
+        margin: 20px 0;
         display: flex;
         align-items: center;
         width: 100%;
@@ -95,14 +95,14 @@ form {
 
     @include breakpoint('sm') {
         grid-template-columns: 1fr 1fr 1fr;
-        column-gap: 36px;
+        column-gap: 32px;
     }
 
     @include breakpoint('md') {
         margin: 24px 0;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap: 56px;
-        row-gap: 40px;
+        column-gap: 48px;
+        row-gap: 36px;
     }
 
     @include breakpoint('lg') {
@@ -115,6 +115,15 @@ form {
         box-shadow: $box-shadow;
         background: var(--elements-main);
         height: auto;
+        max-height: 400px;
+
+        @include breakpoint('sm') {
+            height: 300px;
+        }
+
+        @include breakpoint('md') {
+            height: 320px;
+        }
 
         .flag {
             width: 100%;
@@ -200,7 +209,7 @@ form {
         svg {
             position: absolute;
             height: 24%;
-            fill: var(--elements-dimmed);
+            fill: var(--text-main);
             right: 24px;
         }
         &:focus {

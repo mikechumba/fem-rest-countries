@@ -52,7 +52,7 @@ const SearchForm = {
                             <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>
                         </svg>
                     </li>
-                    <li ref="list" :aria-expanded="!dropdownHidden" role="list">
+                    <li ref="list" :aria-expanded="!dropdownHidden">
                         <ul class="dropdown" :class="{ hidden: dropdownHidden }" role="listbox">
                             <li @keydown="onKeyDown" @click="setSelected($event); toggleDropdown()" class="dropdown-item" tabindex="0" v-for="(region, index) in regions" :id="'dropdownItem' + (index + 1)" :ref="'dropdownItem' + (index + 1)" role="option">{{ region }}</li>
                         </ul>
@@ -149,12 +149,12 @@ const Countries = {
             <div class="country-list">
                 <card v-if="filteredCountries.length" v-for="country in filteredCountries.slice(0, lastIndex)" :country="country"></card>
             
-                <section v-if="!countries.length" v-for="skeleton in Array(10)" class="card">
+                <section v-if="!countries.length" v-for="skeleton in Array(8)" class="card">
                     <router-link to="/">
                         <div class="skeleton skeleton-img">
                         </div>
                         <div class="summary">
-                            <h4 class="skeleton skeleton-text"></h4>
+                            <p class="skeleton skeleton-text"></p>
                             <div>
                                 <p class="skeleton skeleton-text"></p>
                                 <p class="skeleton skeleton-text"></p>
@@ -181,12 +181,10 @@ const Countries = {
     },
     methods: {
         filterByRegion(region) {
-            console.log(region);
             this.filteredCountries = region !== 'All' ? 
                 this.countries.filter(country => country.continent === region) :
                 this.countries;
             this.lastIndex = 8;
-            console.log(this.filteredCountries);
         },
 
         searchCountry(param) {
@@ -203,7 +201,6 @@ const Countries = {
 
                 if (bottomOfWindow) {
                     this.lastIndex += this.lastIndex;
-                    console.log(this.lastIndex);
                 }
             }
         },
