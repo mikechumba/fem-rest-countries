@@ -54,7 +54,7 @@ const SearchForm = {
                     </li>
                     <li ref="list" :aria-expanded="!dropdownHidden" role="list">
                         <ul class="dropdown" :class="{ hidden: dropdownHidden }" role="listbox">
-                            <li @keydown="onKeyDown" class="dropdown-item" tabindex="0" v-for="(region, index) in regions" :id="'dropdownItem' + (index + 1)" :ref="'dropdownItem' + (index + 1)" role="option">{{ region }}</li>
+                            <li @keydown="onKeyDown" @click="setSelected($event); toggleDropdown()" class="dropdown-item" tabindex="0" v-for="(region, index) in regions" :id="'dropdownItem' + (index + 1)" :ref="'dropdownItem' + (index + 1)" role="option">{{ region }}</li>
                         </ul>
                     </li>
                 </ul>
@@ -147,7 +147,7 @@ const Countries = {
         <div class="page">
             <search-form @filterByRegion="filterByRegion" @searchCountry="searchCountry"></search-form>
             <div class="country-list">
-                <card v-if="listedCountries.length" v-for="country in listedCountries" :country="country"></card>
+                <card v-if="filteredCountries.length" v-for="country in filteredCountries.slice(0, lastIndex)" :country="country"></card>
             
                 <section v-if="!countries.length" v-for="skeleton in Array(10)" class="card">
                     <router-link to="/">
@@ -169,7 +169,6 @@ const Countries = {
     data() {
         return {
             filteredCountries: [],
-            listedCountries: [],
             lastIndex: 8
         }
     },
@@ -182,34 +181,36 @@ const Countries = {
     },
     methods: {
         filterByRegion(region) {
+            console.log(region);
             this.filteredCountries = region !== 'All' ? 
-                this.countries.filter(country => country.region === region) :
+                this.countries.filter(country => country.continent === region) :
                 this.countries;
+            this.lastIndex = 8;
+            console.log(this.filteredCountries);
         },
 
         searchCountry(param) {
             this.filteredCountries = param && param.length > 2 ?
                 this.countries.filter(country => country.name.toLowerCase().startsWith(param.toLowerCase())) :
                 this.countries;
+
+            this.lastIndex = 8;
         }, 
 
-        getNext(e) {
+        getNext() {
             window.onscroll = () => {
                 let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
 
                 if (bottomOfWindow) {
-                    this.listedCountries = [...this.filteredCountries].slice(0, this.lastIndex)
-
                     this.lastIndex += this.lastIndex;
+                    console.log(this.lastIndex);
                 }
             }
         },
 
         getInitialCountries() {
-            if (!this.listedCountries.length && this.countries.length) {
+            if (!this.filteredCountries.length && this.countries.length) {
                 this.filteredCountries = this.countries;
-                this.listedCountries = this.filteredCountries.slice(0, this.lastIndex);
-                this.lastIndex = 16;
             }
         }
     }
