@@ -6,8 +6,21 @@
     --dark-bg: hsl(207, 26%, 17%);
     --dark-text: hsl(200, 15%, 8%);
     --dark-gray: hsl(0, 0%, 52%);
-    --light-bg: hsl(0, 0%, 98%);
+    --light-gray: hsl(0, 0%, 98%);
     --white: hsl(0, 0%, 100%);
+    --bg-main: var(--light-gray);
+    --text-main: var(--dark-text);
+    --text-dimmed: var(--dark-gray);
+    --elements-main: var(--white);
+    --elements-dimmed: var(--dark-gray);
+}
+
+[data-theme="dark"] {
+    --bg-main: var(--dark-bg);
+    --text-main: var(--white);
+    --text-dimmed: var(--dark-gray);
+    --elements-main: var(--dark-blue);
+    --elements-dimmed: var(--dark-text);
 }
 
 $breakpoints: (

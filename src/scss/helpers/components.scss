@@ -13,13 +13,13 @@
 
 nav {
     width: 100%;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(var(--elements-main), 0.2) 0px 8px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
     margin-bottom: 24px;
-
+    background: var(--elements-main);
     @include breakpoint('sm') {
         padding: 0 40px;
     }
@@ -30,8 +30,8 @@ nav {
         background: transparent;
         border: none;
         svg {
-            fill: none;
-            stroke: var(--dark-bg);
+            fill: var(--white);
+            stroke: var(--text-main);
             stroke-width: 32px;
             height: toRem(14);
         }
@@ -39,6 +39,7 @@ nav {
             padding-left: 12px;
             font-size: toRem(14);
             font-weight: 600;
+            color: var(--text-main);
         }
     }
 }
@@ -56,8 +57,8 @@ form {
         display: flex;
         align-items: center;
         width: 100%;
-        background-color: var(--white);
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        background-color: var(--elements-main);
+        box-shadow: rgba(var(--elements-dimmed), 0.7) 0px 8px 24px;
         border-radius: 6px;
 
         @include breakpoint('sm') {
@@ -68,8 +69,9 @@ form {
             border: none;
             padding: 16px;
             font-size: toRem(14);
+            background-color: var(--elements-main);
             &::placeholder {
-                color: var(--dark-gray);
+                color: var(--text-main);
                 font-weight: 600;
             }
             &:focus {
@@ -77,8 +79,7 @@ form {
             }
         }
         svg {
-            
-            fill: var(--dark-gray);
+            fill: var(--text-main);
             padding: 0 4px 0 28px;
             height: toRem(21);
         }
@@ -111,7 +112,7 @@ form {
     .card {
         margin-bottom: 12px;
         border-radius: 8px;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;;
+        box-shadow: rgba(var(--elements-dimmed), 0.7) 0px 8px 24px;;
         .flag {
             width: 100%;
             overflow: hidden;
@@ -162,15 +163,15 @@ form {
     }
 
     .selected, .dropdown {
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        background-color: var(--white);
+        box-shadow: rgba(var(--elements-dimmed), 0.7) 0px 8px 24px;
+        background-color: var(--elements-main);
         border: none;
         border-radius: 4px;
         padding: 16px 24px;
         appearance: none;
         font-size: toRem(14);
         font-weight: 600;
-        color: var(--dark-bg);
+        color: var(--text-main);
     }
 
     .selected {
@@ -182,7 +183,7 @@ form {
         svg {
             position: absolute;
             height: 24%;
-            fill: var(--dark-bg);
+            fill: var(--elements-dimmed);
             right: 24px;
         }
         &:focus {
@@ -211,7 +212,7 @@ form {
 
 .btn {
     outline: none;
-    background-color: var(--white);
+    background-color: var(--elements-main);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 8px 16px;
     font-size: toRem(14);
@@ -225,7 +226,7 @@ form {
         padding: 8px 24px;
         align-items: center;
         svg {
-            fill: var(--dark-bg);
+            fill: var(--elements-dimmed);
             height: 12px;
             padding-right: 8px;
         }
