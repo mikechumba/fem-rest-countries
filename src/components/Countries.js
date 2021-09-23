@@ -147,8 +147,8 @@ const Countries = {
         <div class="page">
             <search-form @filterByRegion="filterByRegion" @searchCountry="searchCountry"></search-form>
             <div class="country-list">
-                <card v-if="filteredCountries.length" v-for="country in filteredCountries" :country="country"></card>
-                <card v-if="!filteredCountries.length" v-for="country in countries" :country="country"></card>
+                <card v-if="listedCountries.length" v-for="country in listedCountries" :country="country"></card>
+            
                 <section v-if="!countries.length" v-for="skeleton in Array(10)" class="card">
                     <router-link to="/">
                         <div class="skeleton skeleton-img">
@@ -168,8 +168,17 @@ const Countries = {
     `,
     data() {
         return {
-            filteredCountries: []
+            filteredCountries: [],
+            listedCountries: [],
+            lastIndex: 8
         }
+    },
+    mounted() {
+        this.getNext();
+        this.getInitialCountries();
+    },
+    updated() {
+        this.getInitialCountries();
     },
     methods: {
         filterByRegion(region) {
@@ -182,6 +191,26 @@ const Countries = {
             this.filteredCountries = param && param.length > 2 ?
                 this.countries.filter(country => country.name.toLowerCase().startsWith(param.toLowerCase())) :
                 this.countries;
+        }, 
+
+        getNext(e) {
+            window.onscroll = () => {
+                let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+
+                if (bottomOfWindow) {
+                    this.listedCountries = [...this.filteredCountries].slice(0, this.lastIndex)
+
+                    this.lastIndex += this.lastIndex;
+                }
+            }
+        },
+
+        getInitialCountries() {
+            if (!this.listedCountries.length && this.countries.length) {
+                this.filteredCountries = this.countries;
+                this.listedCountries = this.filteredCountries.slice(0, this.lastIndex);
+                this.lastIndex = 16;
+            }
         }
     }
 }

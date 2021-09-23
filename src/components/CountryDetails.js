@@ -79,7 +79,6 @@ const CountryDetails = {
     methods: {
         getCountry() {
             this.country = this.countries.find(country => country.alpha3Code === this.$route.params.code);
-            console.log(this.country);
         },
 
         getCountryName(alpha3Code) {
