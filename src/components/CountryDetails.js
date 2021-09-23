@@ -14,16 +14,16 @@ const CountryDetails = {
                     </button>
                 </router-link>
             </div>
-            <article class="country-details">
+            <article v-if="country.name" class="country-details">
                 <div class="flag">
-                    <img :src="country.flag" :alt="country.name + ' flag'">
+                    <img :src="country.flags[1]" :alt="country.name + ' flag'">
                 </div>
                 <div class="country-description">
                     <h4>{{ country.name }}</h4>
                     <div class="description">
                         <ul>
                             <li>
-                                <b>Native Name:</b> {{ country.nativeName }}
+                                <b>Native Name:</b> {{ country.name }}
                             </li>
                             <li>
                                 <b>Population:</b> {{ numberWithCommas(country.population) }}
@@ -79,6 +79,7 @@ const CountryDetails = {
     methods: {
         getCountry() {
             this.country = this.countries.find(country => country.alpha3Code === this.$route.params.code);
+            console.log(this.country);
         },
 
         getCountryName(alpha3Code) {

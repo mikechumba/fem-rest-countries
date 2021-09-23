@@ -2,7 +2,7 @@ import Countries from "./components/Countries";
 import CountryDetails from "./components/CountryDetails";
 import Header from "./components/Header";
 
-const url = 'https://restcountries.eu/rest/v2/all';
+const url = 'https://restcountries.com/v2/all';
 
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),

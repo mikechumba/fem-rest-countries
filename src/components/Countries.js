@@ -6,7 +6,7 @@ const Card = {
         <section class="card">
             <router-link :to="'/details/' + country.alpha3Code">
                 <div class="flag">
-                    <img :src="country.flag" :alt="country.name + 'country flag'" role="img">
+                    <img :src="country.flags[1]" :alt="country.name + ' flag'" role="img">
                 </div>
                 <div class="summary">
                     <h4>{{ country.name }}</h4>

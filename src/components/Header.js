@@ -12,12 +12,23 @@ const Header = {
     template: `
         <nav>
             <h4>Where in the world</h4>
-            <button class="dark-mode-toggle">
+            <button ref="themeToggle" @click="toggleTheme" class="dark-mode-toggle">
                 ${Icon}
                 <span>Dark Mode</span>
             </button>
         </nav>
-    `
+    `, 
+    data() {
+        return {
+            theme: 'light'
+        }
+    },
+    methods: {
+        toggleTheme(e) {
+            this.theme = this.theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', this.theme);
+        }
+    }
 }
 
 export default Header;
