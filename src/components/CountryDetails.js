@@ -56,7 +56,7 @@ const CountryDetails = {
                     <div class="border-countries">
                         <h5>Border Countries:</h5>
                         <div>
-                            <router-link v-for="border in country.borders" to="/details/002">
+                            <router-link v-for="border in country.borders" :to="'/details/' + border">
                                 <button class="btn btn-group">{{ getCountryName(border) }}</button>
                             </router-link>
                         </div>
