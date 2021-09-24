@@ -67,6 +67,16 @@ const SearchForm = {
             dropdownHidden: true
         }
     },
+    mounted() {
+        document.documentElement.addEventListener('click', e => {
+            if (!['dropdown', 'selected'].includes(e.target.className)) {
+                this.dropdownHidden = true;
+            }
+        });
+    },
+    deactivated() {
+        document.documentElement.removeEventListener('click');
+    },
     methods: {
         toggleVisibility(e) {
             const { esc, enter, arrowDown, arrowUp } = KEY_CODES;
@@ -85,9 +95,11 @@ const SearchForm = {
                     this.toggleDropdown();
                     return;
                 case KEY_CODES.arrowDown:
+                    e.preventDefault();
                     this.nextItem(e);
                     return;
                 case KEY_CODES.arrowUp:
+                    e.preventDefault();
                     this.nextItem(e);
                     return;
                 case KEY_CODES.esc:
@@ -98,8 +110,10 @@ const SearchForm = {
             }
         },
         setSelected(e) {
-            this.$refs.selected.firstChild.textContent = e.target.textContent;
-            this.$emit('filterByRegion', e.target.textContent);
+            if (e.target.className !== 'selected') {
+                this.$refs.selected.firstChild.textContent = e.target.textContent;
+                this.$emit('filterByRegion', e.target.textContent);
+            }
         },
         nextItem(e) {
             if (e.keyCode === KEY_CODES.arrowDown) {
