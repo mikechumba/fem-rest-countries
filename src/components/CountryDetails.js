@@ -16,7 +16,7 @@ const CountryDetails = {
             </div>
             <article v-if="country.name" class="country-details">
                 <div class="flag">
-                    <img :src="country.flags[0]" :alt="country.name + ' flag'">
+                    <img :src="country.flag || country.flags[0]" :alt="country.name + ' flag'">
                 </div>
                 <div class="country-description">
                     <h4>{{ country.name }}</h4>
