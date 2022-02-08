@@ -194,7 +194,7 @@ const Countries = {
     methods: {
         filterByRegion(region) {
             this.filteredCountries = region !== 'All' ? 
-                this.countries.filter(country => country.continent === region) :
+                this.countries.filter(country => country.region === region) :
                 this.countries;
             this.lastIndex = 8;
         },
