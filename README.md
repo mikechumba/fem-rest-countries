@@ -67,7 +67,7 @@ Users should be able to:
 
 ## Author
 
-- Website - [Michael Kipchumba](https://mikechumba.github.io/)
+- Website - [Michael Kipchumba](https://mikechumba.com/)
 - Frontend Mentor - [@mikechumba](https://www.frontendmentor.io/profile/mikechumba)
 
 ## Acknowledgments
